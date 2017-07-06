@@ -1,0 +1,31 @@
+﻿<div class="row">
+  <div class="form-group">
+
+            <div class="col-md-3">
+                <input type="text" [(ngModel)]="searchText"
+                       class="form-control" placeholder="Search By EmployeeType" />
+            </div>
+   </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th  class="pointer" (click)="sort('employeeName')"> Employee Name </th>
+            <th class="pointer" (click)="sort('employeeType')"> Employee Type </th>
+            <th class="pointer" (click)="sort('employeeDesignation')"> Employee Designation </th>
+        </tr>
+        <tbody>
+            <tr *ngFor="let x of Employees | filter : searchText | sortBy: {property: column, direction: direction}" selecttable="white">
+                <td>
+                    {{x.employeeName}}
+                </td>
+                <td>
+                    {{x.employeeType}}
+                </td>
+                <td>
+                    {{x.employeeDesignation}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
